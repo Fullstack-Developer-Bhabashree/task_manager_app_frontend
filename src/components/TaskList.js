@@ -61,7 +61,6 @@ const TaskList = () => {
         try {
             setIsLoading(true)
             const { data } = await axios.get(`${URL}/api/tasks`)
-            console.log(data)
             setIsLoading(false)
             setTasks(data)
         } catch (error) {
@@ -89,7 +88,7 @@ const TaskList = () => {
             setIsEditing(true)
             setIsLoading(false)
             setTaskId(id)
-            console.log(data)
+            
         } catch (error) {
             toast.error(error.message);
             setIsLoading(false)
@@ -98,7 +97,7 @@ const TaskList = () => {
 
     const updateTask = async (e) => {
         e.preventDefault();
-        console.log(taskId);
+        
         if (name === "") {
             return toast.error("Name of the Task can't be empty")
         }
@@ -107,7 +106,7 @@ const TaskList = () => {
             toast.success("Task updated successfully")
             setIsEditing(false)
             setFormData({ ...formData, name: "" })
-            console.log(isEditing)
+            
         } catch (error) {
             toast.error(error.message);
         }
